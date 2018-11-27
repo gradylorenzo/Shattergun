@@ -6,7 +6,7 @@ public class PlayerLook : MonoBehaviour
 {
     [SerializeField] private string mouseXInputName, mouseYInputName;
     [SerializeField] private float mouseXSensitivity, mouseYSensitivity;
-
+    public float sensitivityMultiplier = 1.0f;
     [SerializeField] private Transform playerBody;
 
     private float xAxisClamp;
@@ -30,8 +30,8 @@ public class PlayerLook : MonoBehaviour
 
     private void CameraRotation()
     {
-        float mouseX = Input.GetAxis(mouseXInputName) * mouseXSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis(mouseYInputName) * mouseYSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis(mouseXInputName) * (mouseXSensitivity * sensitivityMultiplier) * Time.deltaTime;
+        float mouseY = Input.GetAxis(mouseYInputName) * (mouseYSensitivity * sensitivityMultiplier) * Time.deltaTime;
 
         xAxisClamp += mouseY;
 
@@ -48,6 +48,7 @@ public class PlayerLook : MonoBehaviour
             ClampXAxisRotationToValue(90.0f);
         }
 
+        
         transform.Rotate(Vector3.left * mouseY);
         playerBody.Rotate(Vector3.up * mouseX);
     }

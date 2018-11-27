@@ -7,12 +7,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInputName;
     [SerializeField] private string verticalInputName;
     [SerializeField] private float movementSpeed;
-
+    [SerializeField] private float walkingSpeed;
+    [SerializeField] private float runningSpeed;
+    [SerializeField] private bool isRunning = false;
     private CharacterController charController;
 
     [SerializeField] private AnimationCurve jumpFallOff;
     [SerializeField] private float jumpMultiplier;
-    [SerializeField] private KeyCode jumpKey;
 
 
     private bool isJumping;
@@ -29,6 +30,16 @@ public class PlayerMove : MonoBehaviour
 
     private void PlayerMovement()
     {
+        SprintInput();
+        if (isRunning)
+        {
+            movementSpeed = runningSpeed;
+        }
+        else
+        {
+            movementSpeed = walkingSpeed;
+        }
+
         float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
         float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;
 
@@ -38,15 +49,26 @@ public class PlayerMove : MonoBehaviour
         charController.SimpleMove(forwardMovement + rightMovement);
 
         JumpInput();
-
     }
 
     private void JumpInput()
     {
-        if (Input.GetKeyDown(jumpKey) && !isJumping)
+        if (Input.GetButtonDown("Jump") && !isJumping)
         {
             isJumping = true;
             StartCoroutine(JumpEvent());
+        }
+    }
+
+    private void SprintInput()
+    {
+        if (Input.GetButton("Sprint"))
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
         }
     }
 

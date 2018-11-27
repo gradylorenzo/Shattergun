@@ -4,12 +4,22 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Case
+    100004: Lid
     400000: //RootNode
+    400002: Case
+    400004: Lid
     2100000: 01 - Default
     2100002: 02 - Default
     2300000: //RootNode
+    2300002: Case
+    2300004: Lid
     3300000: //RootNode
+    3300002: Case
+    3300004: Lid
     4300000: Box001
+    4300002: Case
+    4300004: Lid
   externalObjects: {}
   materials:
     importMaterials: 0
