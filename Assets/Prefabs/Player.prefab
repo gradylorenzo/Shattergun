@@ -99,7 +99,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.02
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -194,8 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000f66cda3b773b49b87f0fac509f354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killplaneTag: Killplane
-  respawnTag: Respawn
 --- !u!114 &114324221902876812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,7 +209,7 @@ MonoBehaviour:
   verticalInputName: Vertical
   movementSpeed: 5
   walkingSpeed: 5
-  runningSpeed: 8
+  runningSpeed: 10
   isRunning: 0
   jumpFallOff:
     serializedVersion: 2
@@ -249,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159a5edddfc3b0d42a4c4973b6e0e8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultGun: {fileID: 1546143276267380, guid: 80419ea85377dc24cb417470716f7372, type: 2}
+  defaultGun: {fileID: 1546143276267380, guid: 431ec81e212c1394b98ae751af9ac11a, type: 2}
   gun: {fileID: 0}
   pickupPrefab: {fileID: 0}
 --- !u!114 &114681186875274216

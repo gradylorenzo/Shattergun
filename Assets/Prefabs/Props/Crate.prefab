@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114141615248546188}
   - component: {fileID: 54995426697829800}
   - component: {fileID: 65527762860316424}
+  - component: {fileID: 108559179493034936}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960655427197588}
   m_LocalRotation: {x: -0.70710707, y: -0, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -3.17, y: 0.537, z: 6.540001}
+  m_LocalPosition: {x: -17.455687, y: 0.22799891, z: 14.203751}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,6 +115,43 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.016, y: 1.016, z: 1.016}
   m_Center: {x: 0, y: -0.00000047683716, z: -0.000000059604645}
+--- !u!108 &108559179493034936
+Light:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960655427197588}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 0.07058824, a: 1}
+  m_Intensity: 2
+  m_Range: 2.43
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114141615248546188
 MonoBehaviour:
   m_ObjectHideFlags: 1

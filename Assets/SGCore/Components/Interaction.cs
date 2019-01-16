@@ -32,9 +32,14 @@ public class Interaction : MonoBehaviour {
                 SwitchGun(hit.transform.GetComponent<GunPickup>().gun);
                 Destroy(hit.transform.gameObject);
             }
-            else if(hit.transform.tag == "Lootbox")
+            else if(hit.transform.tag == "Door")
             {
-                hit.transform.gameObject.SendMessage("Interact");
+                hit.transform.parent.gameObject.SendMessage("Interact");
+                Debug.Log("Interacted");
+            }
+            else
+            {
+                hit.transform.gameObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
             }
         }
     }

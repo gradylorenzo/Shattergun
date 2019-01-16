@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114577598784086080}
   m_Layer: 0
   m_Name: Lootbox
-  m_TagString: Lootbox
+  m_TagString: GenericInteractiveObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
