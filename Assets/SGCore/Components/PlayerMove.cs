@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
         charController = GetComponent<CharacterController>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         PlayerMovement();
     }
@@ -89,4 +89,9 @@ public class PlayerMove : MonoBehaviour
         isJumping = false;
     }
 
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.other.name);
+    }
 }

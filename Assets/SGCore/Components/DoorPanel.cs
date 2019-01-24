@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class DoorPanel : MonoBehaviour {
 
-    public DoorController Door;
+    [SerializeField]
+    private Animator DoorAnimator;
+    public float delay;
+    private float openTime;
 
-	public void Interact()
+    public void Interact()
     {
-        if(Door != null)
+        if(DoorAnimator != null)
         {
-            Door.ToggleDoor();
+            ToggleDoor();
         }
         else
         {
             Debug.Log("No Door Assigned");
         }
+    }
+
+    public void ToggleDoor()
+    {
+        openTime = Time.time;
+        DoorAnimator.SetBool("isOpen", !DoorAnimator.GetBool("isOpen"));
     }
 }

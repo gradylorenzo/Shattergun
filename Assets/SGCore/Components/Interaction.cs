@@ -11,7 +11,10 @@ public class Interaction : MonoBehaviour {
 
     public void Start()
     {
-        SwitchGun(defaultGun);
+        if (defaultGun)
+        {
+            SwitchGun(defaultGun);
+        }
     }
 
     public void Update()

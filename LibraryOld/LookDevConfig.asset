@@ -69,33 +69,33 @@ MonoBehaviour:
   m_CurrentEditionContextIndex: 0
   m_DualViewBlendFactor: 0
   m_OriginalGameObject:
-  - {fileID: 100000, guid: a84e461e761c983469c0a43596c212b0, type: 3}
-  - {fileID: 100000, guid: a84e461e761c983469c0a43596c212b0, type: 3}
+  - {fileID: 1611903251862464, guid: 9a546c39c2aaa264eb1a91fab7517fae, type: 2}
+  - {fileID: 1611903251862464, guid: 9a546c39c2aaa264eb1a91fab7517fae, type: 2}
   m_CameraState:
   - m_Pivot:
-      m_Target: {x: 0, y: -0.000000014901161, z: 0}
+      m_Target: {x: 0.22708619, y: 0.8877655, z: 0.15182877}
       speed: 2
-      m_Value: {x: 0, y: -0.000000014901161, z: 0}
+      m_Value: {x: 0.22708619, y: 0.8877655, z: 0.15182877}
     m_Rotation:
-      m_Target: {x: 0.081951976, y: -0.9171532, z: 0.25383127, w: 0.29611415}
+      m_Target: {x: -0.08903044, y: 0.85950935, z: -0.16040398, w: -0.47706175}
       speed: 2
-      m_Value: {x: 0.081951976, y: -0.9171532, z: 0.25383127, w: 0.29611415}
+      m_Value: {x: -0.08903044, y: 0.85950935, z: -0.16040398, w: -0.47706175}
     m_ViewSize:
-      m_Target: 2.8486092
+      m_Target: 2.076698
       speed: 2
-      m_Value: 2.8486092
+      m_Value: 2.076698
   - m_Pivot:
-      m_Target: {x: 0, y: -0.000000014901161, z: 0}
+      m_Target: {x: 0, y: 1.7368442, z: -0.35784566}
       speed: 2
-      m_Value: {x: 0, y: -0.000000014901161, z: 0}
+      m_Value: {x: 0, y: 1.7368442, z: -0.35784566}
     m_Rotation:
       m_Target: {x: 0, y: 0, z: 0, w: 1}
       speed: 2
       m_Value: {x: 0, y: 0, z: 0, w: 1}
     m_ViewSize:
-      m_Target: 2.8486092
+      m_Target: 6.276699
       speed: 2
-      m_Value: 2.8486092
+      m_Value: 6.276699
   m_SideBySideCameraLinked: 0
   m_CameraStateCommon:
     m_Pivot:
@@ -112,27 +112,27 @@ MonoBehaviour:
       m_Value: 0
   m_CameraStateLeft:
     m_Pivot:
-      m_Target: {x: 0, y: -0.000000014901161, z: 0}
+      m_Target: {x: 0.22708619, y: 0.8877655, z: 0.15182877}
       speed: 2
-      m_Value: {x: 0, y: -0.000000014901161, z: 0}
+      m_Value: {x: 0.22708619, y: 0.8877655, z: 0.15182877}
     m_Rotation:
-      m_Target: {x: 0.081951976, y: -0.9171532, z: 0.25383127, w: 0.29611415}
+      m_Target: {x: -0.08903044, y: 0.85950935, z: -0.16040398, w: -0.47706175}
       speed: 2
-      m_Value: {x: 0.081951976, y: -0.9171532, z: 0.25383127, w: 0.29611415}
+      m_Value: {x: -0.08903044, y: 0.85950935, z: -0.16040398, w: -0.47706175}
     m_ViewSize:
-      m_Target: 2.8486092
+      m_Target: 2.076698
       speed: 2
-      m_Value: 2.8486092
+      m_Value: 2.076698
   m_CameraStateRight:
     m_Pivot:
-      m_Target: {x: 0, y: -0.000000014901161, z: 0}
+      m_Target: {x: 0, y: 1.7368442, z: -0.35784566}
       speed: 2
-      m_Value: {x: 0, y: -0.000000014901161, z: 0}
+      m_Value: {x: 0, y: 1.7368442, z: -0.35784566}
     m_Rotation:
       m_Target: {x: 0, y: 0, z: 0, w: 1}
       speed: 2
       m_Value: {x: 0, y: 0, z: 0, w: 1}
     m_ViewSize:
-      m_Target: 2.8486092
+      m_Target: 6.276699
       speed: 2
-      m_Value: 2.8486092
+      m_Value: 6.276699

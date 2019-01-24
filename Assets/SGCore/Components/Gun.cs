@@ -13,8 +13,8 @@ public class Gun : MonoBehaviour {
         public float range;
         public float rateOfFire;
         public float impactForce;
-        public float recoilHipfire;
-        public float recoilADS;
+        public Vector2 recoilHipfire;
+        public Vector2 recoilADS;
         public Vector3 hipfirePosition;
         public Vector3 ADSPosition;
         public Vector3 runningPosition;
@@ -22,6 +22,7 @@ public class Gun : MonoBehaviour {
     }
 
     private bool CanUseGun = true;
+
     [SerializeField] private bool isADS = false;
     public bool ADSTest = false;
 
@@ -39,6 +40,11 @@ public class Gun : MonoBehaviour {
     [SerializeField] private AudioSource gunSound;
 
     private float nextFire = 0f;
+
+    private void Start()
+    {
+        fpsCam = transform.parent.GetComponent<Camera>();
+    }
 
     private void Update()
     {
@@ -77,15 +83,15 @@ public class Gun : MonoBehaviour {
     {
         muzzleFlash.Play();
         gunSound.Play();
-        GetComponent<Animator>().Play("KICK");
+        //GetComponent<Animator>().Play("KICK");
 
         if (isADS)
         {
-            fpsCam.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(-Config.recoilADS, 0, 0));
+            fpsCam.SendMessage("Bump", Config.recoilADS);
         }
         else
         {
-            fpsCam.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(-Config.recoilHipfire, 0, 0));
+            fpsCam.SendMessage("Bump", Config.recoilHipfire);
         }
 
         RaycastHit hit;

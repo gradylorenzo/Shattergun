@@ -415,10 +415,10 @@ MonoBehaviour:
     canADS: 1
     damage: 10
     range: 100
-    rateOfFire: 8
+    rateOfFire: 9
     impactForce: 90
-    recoilHipfire: 10
-    recoilADS: 8
+    recoilHipfire: {x: 3.5, y: 0}
+    recoilADS: {x: 1.5, y: 0}
     hipfirePosition: {x: 0.113, y: -0.138, z: 0.393}
     ADSPosition: {x: 0, y: -0.094, z: 0.29}
     runningPosition: {x: 0, y: 0, z: 0}

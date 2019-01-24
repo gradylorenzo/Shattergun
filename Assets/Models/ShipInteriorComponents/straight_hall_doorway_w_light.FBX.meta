@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 350e7c29cfa20fe47ab61343498d7331
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Box001
+    100004: inner_corner
+    100006: inner_corner001
+    100008: Line001
+    100010: Line013
+    100012: Object001
+    100014: outer_corner
+    100016: outer_corner001
+    100018: Plane002
+    100020: Plane003
+    100022: Plane004
+    100024: Plane005
+    100026: stairs
+    100028: straight_hallway_half
+    100030: straight_hallway_half001
+    100032: straight_hallway_half002
+    100034: straight_hallway_quarter
+    400000: //RootNode
+    400002: Box001
+    400004: inner_corner
+    400006: inner_corner001
+    400008: Line001
+    400010: Line013
+    400012: Object001
+    400014: outer_corner
+    400016: outer_corner001
+    400018: Plane002
+    400020: Plane003
+    400022: Plane004
+    400024: Plane005
+    400026: stairs
+    400028: straight_hallway_half
+    400030: straight_hallway_half001
+    400032: straight_hallway_half002
+    400034: straight_hallway_quarter
+    2100000: 03 - Default
+    2100002: 02 - Default
+    2100004: 01 - Default
+    2100006: 08 - Default
+    2100008: 07 - Default
+    2100010: No Name
+    2100012: 09 - Default
+    2300000: //RootNode
+    2300002: Box001
+    2300004: inner_corner
+    2300006: inner_corner001
+    2300008: Line001
+    2300010: Line013
+    2300012: Object001
+    2300014: outer_corner
+    2300016: outer_corner001
+    2300018: Plane002
+    2300020: Plane003
+    2300022: Plane004
+    2300024: Plane005
+    2300026: stairs
+    2300028: straight_hallway_half
+    2300030: straight_hallway_half001
+    2300032: straight_hallway_half002
+    2300034: straight_hallway_quarter
+    3300000: //RootNode
+    3300002: Box001
+    3300004: inner_corner
+    3300006: inner_corner001
+    3300008: Line001
+    3300010: Line013
+    3300012: Object001
+    3300014: outer_corner
+    3300016: outer_corner001
+    3300018: Plane002
+    3300020: Plane003
+    3300022: Plane004
+    3300024: Plane005
+    3300026: stairs
+    3300028: straight_hallway_half
+    3300030: straight_hallway_half001
+    3300032: straight_hallway_half002
+    3300034: straight_hallway_quarter
+    4300000: straight_hallway_half002
+    4300002: Plane002
+    4300004: Plane003
+    4300006: straight_hallway_half
+    4300008: inner_corner
+    4300010: outer_corner
+    4300012: straight_hallway_quarter
+    4300014: straight_hallway_half001
+    4300016: outer_corner001
+    4300018: Plane004
+    4300020: Plane005
+    4300022: stairs
+    4300024: Line001
+    4300026: Line013
+    4300028: Object001
+    4300030: inner_corner001
+    4300032: Box001
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 64
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
