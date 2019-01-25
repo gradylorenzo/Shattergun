@@ -49,16 +49,19 @@ public class Interaction : MonoBehaviour {
 
     public void SwitchGun(GameObject g)
     {
+        if (pickupPrefab)
+        {
+            GameObject oldGun = Instantiate(pickupPrefab, transform.position, transform.rotation);
+            oldGun.GetComponent<GunPickup>().ammo = gun.GetComponent<Gun>().ammo;
+        }
         Destroy(gun);
+
         gun = null;
         GameObject newGun = Instantiate(g, transform.position, transform.rotation);
         gun = newGun;
         gun.transform.parent = transform;
-        gun.GetComponent<Gun>().fpsCam = GetComponent<Camera>();
-        if (pickupPrefab)
-        {
-            Instantiate(pickupPrefab, transform.position, transform.rotation);
-        }
+        gun.GetComponent<Gun>().ammo = g.GetComponent<GunPickup>().ammo;
+        
         pickupPrefab = gun.GetComponent<Gun>().Config.pickupPrefab;
         Debug.Log("GUN SWITCHED");
     }

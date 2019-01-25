@@ -20,7 +20,8 @@ public class Gun : MonoBehaviour {
         public Vector3 runningPosition;
         public GameObject pickupPrefab;
     }
-
+    public int ammo = 20;
+    public int ammoCapacity = 20;
     private bool CanUseGun = true;
 
     [SerializeField] private bool isADS = false;
@@ -76,49 +77,83 @@ public class Gun : MonoBehaviour {
             }
             currentGunPosition = Vector3.MoveTowards(currentGunPosition, wantedGunPosition, adsTransitionSpeed);
             gunModel.transform.localPosition = currentGunPosition;
+
+            if (Input.GetButtonDown("Reload"))
+            {
+                Reload();
+            }
         }
     }
 
     private void Shoot()
     {
-        muzzleFlash.Play();
-        gunSound.Play();
-        //GetComponent<Animator>().Play("KICK");
+        if (ammo > 0)
+        {
+            muzzleFlash.Play();
+            gunSound.Play();
+            //GetComponent<Animator>().Play("KICK");
 
-        if (isADS)
-        {
-            fpsCam.SendMessage("Bump", Config.recoilADS);
-        }
-        else
-        {
-            fpsCam.SendMessage("Bump", Config.recoilHipfire);
-        }
-
-        RaycastHit hit;
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, Config.range))
-        {
-            if(hit.rigidbody != null)
+            if (isADS)
             {
-                hit.rigidbody.AddForce(-hit.normal * Config.impactForce);
-            }
-
-            Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
-            {
-                Debug.Log("HIT GAMEOBJECT " + hit.transform.name + " : TARGET COMPONENT FOUND");
-                if (target.isExplosive)
-                {
-                    target.Damage(Config.damage, hit.point, hit.normal);
-                }
-                else
-                {
-                    target.Damage(Config.damage);
-                }
+                fpsCam.SendMessage("Bump", Config.recoilADS);
             }
             else
             {
-                Debug.Log("HIT GAMEOBJECT " + hit.transform.name + " : TARGET COMPONENT NOT FOUND");
+                fpsCam.SendMessage("Bump", Config.recoilHipfire);
             }
+
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, Config.range))
+            {
+                if (hit.rigidbody != null)
+                {
+                    hit.rigidbody.AddForce(-hit.normal * Config.impactForce);
+                }
+
+                Target target = hit.transform.GetComponent<Target>();
+                if (target != null)
+                {
+                    Debug.Log("HIT GAMEOBJECT " + hit.transform.name + " : TARGET COMPONENT FOUND");
+                    if (target.isExplosive)
+                    {
+                        target.Damage(Config.damage, hit.point, hit.normal);
+                    }
+                    else
+                    {
+                        target.Damage(Config.damage);
+                    }
+                }
+                else
+                {
+                    Debug.Log("HIT GAMEOBJECT " + hit.transform.name + " : TARGET COMPONENT NOT FOUND");
+                }
+            }
+            ammo -= 1;
+        }
+        else
+        {
+            Reload();
+        }
+    }
+
+    private void Reload()
+    {
+        if (LocalPlayerManager.ammo > 0)
+        {
+            if (LocalPlayerManager.ammo > ammoCapacity)
+            {
+                LocalPlayerManager.UseAmmo(ammoCapacity - ammo);
+                ammo += ammoCapacity - ammo;
+            }
+            else
+            {
+                ammo = LocalPlayerManager.ammo;
+                LocalPlayerManager.DrainAmmo();
+            }
+        }
+        else
+        {
+            Debug.Log("No ammo!");
         }
     }
 }

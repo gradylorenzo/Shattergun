@@ -23,7 +23,7 @@ public class PlayerCamera : MonoBehaviour {
         masterLookRotation = anchor.rotation;
 
         //Slowly zero out the offset rotation
-        offsetLookRotation = Quaternion.RotateTowards(offsetLookRotation, defaultLookRotation, offsetDamping);
+        offsetLookRotation = Quaternion.Lerp(offsetLookRotation, defaultLookRotation, offsetDamping);
 
         //Add the master rotation and offset together for the final rotation
         finalLookRotation = Quaternion.Euler(offsetLookRotation.eulerAngles + masterLookRotation.eulerAngles);

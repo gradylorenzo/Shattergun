@@ -59,23 +59,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1461642067448800
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4162881786755656}
-  - component: {fileID: 108004555133453938}
-  - component: {fileID: 114393031980332846}
-  m_Layer: 0
-  m_Name: Spot Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1546143276267380
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,19 +106,6 @@ Transform:
   m_Father: {fileID: 4913697649117878}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -90.00001}
---- !u!4 &4162881786755656
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461642067448800}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0035994202, y: -0.04400003, z: 0.15560007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4913697649117878}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4484769669510550
 Transform:
   m_ObjectHideFlags: 1
@@ -189,7 +159,6 @@ Transform:
   - {fileID: 4060988029984410}
   - {fileID: 4842749689530678}
   - {fileID: 4484769669510550}
-  - {fileID: 4162881786755656}
   m_Father: {fileID: 4888855650537556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -350,54 +319,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!108 &108004555133453938
-Light:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461642067448800}
-  m_Enabled: 0
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4.59
-  m_Range: 80.19
-  m_SpotAngle: 78.6
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!114 &114393031980332846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461642067448800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b7cbf14141dddb4a820aaa7bea2017a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114952989337421408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,8 +338,8 @@ MonoBehaviour:
     range: 20
     rateOfFire: 25
     impactForce: 90
-    recoilHipfire: {x: 0, y: 0}
-    recoilADS: {x: 0, y: 0}
+    recoilHipfire: {x: 2.5, y: 0}
+    recoilADS: {x: 1.25, y: 0}
     hipfirePosition: {x: 0.113, y: -0.138, z: 0.393}
     ADSPosition: {x: 0, y: -0.094, z: 0.29}
     runningPosition: {x: 0, y: 0, z: 0}

@@ -762,21 +762,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 108147574981173024, guid: c1a09cbcbee60e64cb9e71eb21222fb8,
-        type: 2}
-      propertyPath: m_Range
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 108147574981173024, guid: c1a09cbcbee60e64cb9e71eb21222fb8,
-        type: 2}
-      propertyPath: m_SpotAngle
-      value: 48.574936
-      objectReference: {fileID: 0}
-    - target: {fileID: 108147574981173024, guid: c1a09cbcbee60e64cb9e71eb21222fb8,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1a09cbcbee60e64cb9e71eb21222fb8, type: 2}
   m_IsPrefabAsset: 0
