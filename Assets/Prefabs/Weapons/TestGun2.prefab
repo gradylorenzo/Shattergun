@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4484769669510550}
   - component: {fileID: 82350172816736900}
   m_Layer: 0
-  m_Name: Sound
+  m_Name: Dryfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,6 +39,22 @@ GameObject:
   - component: {fileID: 23860037223271034}
   m_Layer: 0
   m_Name: test_gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1109959825895920
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4645880421135342}
+  - component: {fileID: 82690453382656390}
+  m_Layer: 0
+  m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,6 +133,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4913697649117878}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4645880421135342
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109959825895920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4913697649117878}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4842749689530678
@@ -158,6 +187,7 @@ Transform:
   m_Children:
   - {fileID: 4060988029984410}
   - {fileID: 4842749689530678}
+  - {fileID: 4645880421135342}
   - {fileID: 4484769669510550}
   m_Father: {fileID: 4888855650537556}
   m_RootOrder: 0
@@ -212,6 +242,101 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1046397971762944}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a7edb94945b1ef345a17fcfdb35f8f15, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &82690453382656390
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109959825895920}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -330,14 +455,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c790a2be24f00468437233d2bd02f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammo: 20
+  maxAmmo: 20
   isADS: 0
   ADSTest: 0
   Config:
+    name: Halcyon [FA]
     canADS: 1
+    ADSFOV: 40
+    Mode: 2
+    burstLength: 0
+    pause: 0
     damage: 10
     range: 100
     rateOfFire: 9
     impactForce: 90
+    reloadTime: 3
     recoilHipfire: {x: 5, y: 0}
     recoilADS: {x: 2.5, y: 0}
     hipfirePosition: {x: 0.113, y: -0.138, z: 0.393}
@@ -349,7 +482,8 @@ MonoBehaviour:
   adsTransitionSpeed: 0.05
   gunModel: {fileID: 1196233367290470}
   muzzleFlash: {fileID: 198125552499836840}
-  gunSound: {fileID: 82350172816736900}
+  gunSound: {fileID: 82690453382656390}
+  drySound: {fileID: 82350172816736900}
 --- !u!198 &198125552499836840
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -4,15 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour {
+    [Serializable]
+    public enum FiringModes
+    {
+        semiauto,
+        burstfire,
+        fullauto
+    }
 
     [Serializable]
     public struct GunConfiguration
     {
+        public string name;
         public bool canADS;
+        public float ADSFOV;
+        public FiringModes Mode;
+        public int burstLength;
+        public float pause;
         public float damage;
         public float range;
         public float rateOfFire;
         public float impactForce;
+        public float reloadTime;
         public Vector2 recoilHipfire;
         public Vector2 recoilADS;
         public Vector3 hipfirePosition;
@@ -21,7 +34,7 @@ public class Gun : MonoBehaviour {
         public GameObject pickupPrefab;
     }
     public int ammo = 20;
-    public int ammoCapacity = 20;
+    public int maxAmmo = 20;
     private bool CanUseGun = true;
 
     [SerializeField] private bool isADS = false;
@@ -31,6 +44,10 @@ public class Gun : MonoBehaviour {
 
     public Camera fpsCam;
 
+    [Header("ADS")]
+    private float defaultFOV;
+    private float wantedFOV;
+    private float currentFOV;
     public float adsTransitionSpeed;
 
     private Vector3 wantedGunPosition;
@@ -39,50 +56,77 @@ public class Gun : MonoBehaviour {
     [SerializeField] private GameObject gunModel;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private AudioSource gunSound;
+    [SerializeField] private AudioSource drySound;
 
     private float nextFire = 0f;
 
     private void Start()
     {
         fpsCam = transform.parent.GetComponent<Camera>();
+        defaultFOV = 60;
+        wantedFOV = defaultFOV;
+        currentFOV = defaultFOV;
+        EventManager.AmmoInWeaponChanged(ammo);
+        EventManager.AmmoInStorageChanged(LocalPlayerManager.ammo);
     }
 
     private void Update()
     {
         if (CanUseGun)
         {
-            if ((Input.GetButton("Fire1") || Input.GetAxis("Fire1") > 0) && Time.time >= nextFire)
+            if (Config.Mode == FiringModes.fullauto)
             {
-                nextFire = Time.time + (1f / Config.rateOfFire);
-                Shoot();
+                if ((Input.GetButton("Fire1") || Input.GetAxis("Fire1") > 0) && Time.time >= nextFire)
+                {
+                    nextFire = Time.time + (1f / Config.rateOfFire);
+                    Shoot();
+                }
             }
-            if (!ADSTest)
+            else if(Config.Mode == FiringModes.semiauto)
             {
-                if (Config.canADS)
-                    isADS = (Input.GetButton("ADS") || Input.GetAxis("ADS") > 0);
+                if (((Input.GetButtonDown("Fire1") || (Input.GetAxis("Fire1") > 0)) && Time.time >= nextFire))
+                {
+                    nextFire = Time.time + Config.pause;
+                    Debug.Log(nextFire);
+                    Shoot();
+                }
             }
-            else
+            else if(Config.Mode == FiringModes.burstfire)
             {
-                isADS = true;
-            }
 
-
-            if (!isADS)
-            {
-                wantedGunPosition = Config.hipfirePosition;
             }
-            else
-            {
-                wantedGunPosition = Config.ADSPosition;
-            }
-            currentGunPosition = Vector3.MoveTowards(currentGunPosition, wantedGunPosition, adsTransitionSpeed);
-            gunModel.transform.localPosition = currentGunPosition;
 
             if (Input.GetButtonDown("Reload"))
             {
-                Reload();
+                StartCoroutine("Reload");
             }
         }
+
+        if (!ADSTest)
+        {
+            if (Config.canADS)
+                isADS = (Input.GetButton("ADS") || Input.GetAxis("ADS") > 0);
+        }
+        else
+        {
+            isADS = true;
+        }
+
+
+        if (!isADS)
+        {
+            wantedGunPosition = Config.hipfirePosition;
+            wantedFOV = defaultFOV;
+        }
+        else
+        {
+            wantedGunPosition = Config.ADSPosition;
+            wantedFOV = Config.ADSFOV;
+        }
+        currentFOV = Mathf.MoveTowards(currentFOV, wantedFOV, adsTransitionSpeed * 50);
+        fpsCam.fieldOfView = currentFOV;
+        currentGunPosition = Vector3.MoveTowards(currentGunPosition, wantedGunPosition, adsTransitionSpeed);
+        gunModel.transform.localPosition = currentGunPosition;
     }
 
     private void Shoot()
@@ -122,6 +166,11 @@ public class Gun : MonoBehaviour {
                     {
                         target.Damage(Config.damage);
                     }
+
+                    if (target.isEnemy)
+                    {
+                        EventManager.EnemyHit();
+                    }
                 }
                 else
                 {
@@ -129,31 +178,25 @@ public class Gun : MonoBehaviour {
                 }
             }
             ammo -= 1;
+            EventManager.AmmoInWeaponChanged(ammo);
         }
         else
         {
-            Reload();
+            drySound.Play();
+            StartCoroutine("Reload");
         }
     }
 
-    private void Reload()
+    private IEnumerator Reload()
     {
-        if (LocalPlayerManager.ammo > 0)
+        if (LocalPlayerManager.ammo> 0)
         {
-            if (LocalPlayerManager.ammo > ammoCapacity)
-            {
-                LocalPlayerManager.UseAmmo(ammoCapacity - ammo);
-                ammo += ammoCapacity - ammo;
-            }
-            else
-            {
-                ammo = LocalPlayerManager.ammo;
-                LocalPlayerManager.DrainAmmo();
-            }
-        }
-        else
-        {
-            Debug.Log("No ammo!");
+            CanUseGun = false;
+            yield return new WaitForSeconds(Config.reloadTime);
+            int neededAmmo = maxAmmo - ammo;
+            ammo += LocalPlayerManager.ReloadAmmo(neededAmmo);
+            EventManager.AmmoInWeaponChanged(ammo);
+            CanUseGun = true;
         }
     }
 }

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4789867952975470}
   - component: {fileID: 54767311087200054}
   - component: {fileID: 114550857270077678}
-  - component: {fileID: 65762437838921282}
   m_Layer: 0
   m_Name: GunPickup 1
   m_TagString: Untagged
@@ -53,14 +52,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031887953330106}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.6554356, y: -0.28000098, z: 8.950448}
+  m_LocalRotation: {x: -0, y: 0.5112406, z: -0, w: 0.8594377}
+  m_LocalPosition: {x: -7.7606907, y: 0.841, z: -0.04719782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4815312918537128}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 61.493004, z: 0}
 --- !u!4 &4815312918537128
 Transform:
   m_ObjectHideFlags: 1
@@ -147,18 +146,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: dc57ff42a3c5b3e4d87b907c13a76fe4, type: 3}
---- !u!65 &65762437838921282
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1031887953330106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114550857270077678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,3 +158,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1546143276267380, guid: 431ec81e212c1394b98ae751af9ac11a, type: 2}
+  ammo: 40

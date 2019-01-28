@@ -7,13 +7,12 @@ public class Interaction : MonoBehaviour {
 
     public GameObject defaultGun;
     public GameObject gun;
-    public GameObject pickupPrefab;
 
     public void Start()
     {
         if (defaultGun)
         {
-            SwitchGun(defaultGun);
+            SwitchGun(defaultGun, defaultGun.GetComponent<Gun>().maxAmmo);
         }
     }
 
@@ -32,9 +31,10 @@ public class Interaction : MonoBehaviour {
         {
             if(hit.transform.tag == "GunPickup")
             {
-                SwitchGun(hit.transform.GetComponent<GunPickup>().gun);
+                SwitchGun(hit.transform.GetComponent<GunPickup>().gun, hit.transform.GetComponent<GunPickup>().ammo);
                 Destroy(hit.transform.gameObject);
             }
+
             else if(hit.transform.tag == "Door")
             {
                 hit.transform.parent.gameObject.SendMessage("Interact");
@@ -47,22 +47,25 @@ public class Interaction : MonoBehaviour {
         }
     }
 
-    public void SwitchGun(GameObject g)
+    public void SwitchGun(GameObject g, int a)
     {
-        if (pickupPrefab)
+        //Drop the current gun
+        if (gun)
         {
-            GameObject oldGun = Instantiate(pickupPrefab, transform.position, transform.rotation);
-            oldGun.GetComponent<GunPickup>().ammo = gun.GetComponent<Gun>().ammo;
+            GameObject droppedGun = Instantiate(gun.GetComponent<Gun>().Config.pickupPrefab, transform.position + transform.forward, transform.rotation);
+            droppedGun.GetComponent<GunPickup>().ammo = gun.GetComponent<Gun>().ammo;
         }
+
+        //Destroy the current gun
         Destroy(gun);
 
-        gun = null;
-        GameObject newGun = Instantiate(g, transform.position, transform.rotation);
-        gun = newGun;
-        gun.transform.parent = transform;
-        gun.GetComponent<Gun>().ammo = g.GetComponent<GunPickup>().ammo;
-        
-        pickupPrefab = gun.GetComponent<Gun>().Config.pickupPrefab;
-        Debug.Log("GUN SWITCHED");
+        //Attach the new gun
+        if (g)
+        {
+            gun = Instantiate(g, transform.position, transform.rotation);
+            gun.transform.parent = transform;
+            gun.GetComponent<Gun>().ammo = a;
+            EventManager.GunChanged(g.GetComponent<Gun>().Config.name);
+        }
     }
 }

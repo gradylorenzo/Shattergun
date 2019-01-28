@@ -144,6 +144,7 @@ MonoBehaviour:
   health: 100
   isExplosive: 1
   ExplosionDelay: 5
+  isEnemy: 1
   hitEffect: {fileID: 1892064451059284, guid: 30815c1f3e1c0d44f81c143823e16a50, type: 2}
   destroyedObject: {fileID: 1570990298088154, guid: 7151f5f6f0f2b5a40bed2510e96e129e,
     type: 2}
