@@ -18,7 +18,6 @@ public static class EventManager
 
     public delegate void HealthChangedEvent(float a);
     public static HealthChangedEvent HealthChanged;
-    public static HealthChangedEvent ShieldChanged;
 
     public delegate void TargetHitEvent();
     public static TargetHitEvent EnemyHit;

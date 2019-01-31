@@ -5,49 +5,25 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour {
 
     public float maxHealth = 100;
-    public float maxShield = 100;
     public float currentHealth;
-    public float currentShield;
-    public float ShieldRechargeDelay;
-    public float ShieldRechargeRate;
+    public float HealthRechargeDelay;
+    public float HealthRechargeRate;
     private float timeOfLastHit;
 
     private void Start()
     {
         currentHealth = maxHealth;
-        currentShield = maxShield;
         EventManager.HealthChanged(1);
-        EventManager.ShieldChanged(1);
     }
 
     public void TakeDamage(int d)
     {
-        float remainingDamage = 0;
-
-        if(d < currentShield)
-        {
-            currentShield -= d;
-        }
-        else
-        {
-            remainingDamage = d - currentShield;
-            currentShield = 0;
-            currentHealth -= remainingDamage;
-        }
+        
         timeOfLastHit = Time.time;
-
+        currentHealth -= d;
         float h = currentHealth / maxHealth;
-        float s = currentShield / maxShield;
 
         EventManager.HealthChanged(h);
-        EventManager.ShieldChanged(s);
-    }
-
-    public void RepairSheild(float a)
-    {
-        currentShield = Mathf.Clamp(currentShield + a, 0, maxShield);
-        float s = currentShield / maxShield;
-        EventManager.ShieldChanged(s);
     }
 
     public void RepairHealth(float a)
@@ -59,11 +35,9 @@ public class PlayerHealth : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(Time.time > timeOfLastHit + ShieldRechargeDelay && currentShield < maxShield)
+        if(Time.time > timeOfLastHit + HealthRechargeDelay)
         {
-            currentShield = Mathf.Clamp(currentShield + ShieldRechargeRate, 0, maxShield);
-            float s = currentShield / maxShield;
-            EventManager.ShieldChanged(s);
+            RepairHealth(HealthRechargeRate);
         }
 
         if (Input.GetKeyDown(KeyCode.K))

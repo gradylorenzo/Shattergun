@@ -2,19 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Gun : MonoBehaviour {
-    [Serializable]
-    public enum FiringModes
-    {
-        semiauto,
-        burstfire,
-        fullauto
-    }
+    
 
     [Serializable]
     public struct GunConfiguration
     {
+        [Serializable]
+        public enum FiringModes
+        {
+            semiauto,
+            burstfire,
+            fullauto
+        }
+
         public string name;
         public bool canADS;
         public float ADSFOV;
@@ -41,7 +43,6 @@ public class Gun : MonoBehaviour {
     public bool ADSTest = false;
 
     public GunConfiguration Config;
-
     public Camera fpsCam;
 
     [Header("ADS")]
@@ -74,7 +75,7 @@ public class Gun : MonoBehaviour {
     {
         if (CanUseGun)
         {
-            if (Config.Mode == FiringModes.fullauto)
+            if (Config.Mode == GunConfiguration.FiringModes.fullauto)
             {
                 if ((Input.GetButton("Fire1") || Input.GetAxis("Fire1") > 0) && Time.time >= nextFire)
                 {
@@ -82,16 +83,15 @@ public class Gun : MonoBehaviour {
                     Shoot();
                 }
             }
-            else if(Config.Mode == FiringModes.semiauto)
+            else if(Config.Mode == GunConfiguration.FiringModes.semiauto)
             {
                 if (((Input.GetButtonDown("Fire1") || (Input.GetAxis("Fire1") > 0)) && Time.time >= nextFire))
                 {
                     nextFire = Time.time + Config.pause;
-                    Debug.Log(nextFire);
                     Shoot();
                 }
             }
-            else if(Config.Mode == FiringModes.burstfire)
+            else if(Config.Mode == GunConfiguration.FiringModes.burstfire)
             {
 
             }
@@ -102,6 +102,11 @@ public class Gun : MonoBehaviour {
             }
         }
 
+        ADS();
+    }
+
+    private void ADS()
+    {
         if (!ADSTest)
         {
             if (Config.canADS)
@@ -123,6 +128,7 @@ public class Gun : MonoBehaviour {
             wantedGunPosition = Config.ADSPosition;
             wantedFOV = Config.ADSFOV;
         }
+
         currentFOV = Mathf.MoveTowards(currentFOV, wantedFOV, adsTransitionSpeed * 50);
         fpsCam.fieldOfView = currentFOV;
         currentGunPosition = Vector3.MoveTowards(currentGunPosition, wantedGunPosition, adsTransitionSpeed);

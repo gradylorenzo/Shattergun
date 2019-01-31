@@ -10,7 +10,6 @@ public class AmmoPanel : MonoBehaviour {
     public Text storedAmmo;
     public Text grenades;
     public Image healthbar;
-    public Image shieldbar;
     public Text gunName;
 
     private void Awake()
@@ -23,7 +22,6 @@ public class AmmoPanel : MonoBehaviour {
         EventManager.GrenadesDecreased += GrenadesIncreased;
         EventManager.GrenadesIncreased += GrenadesIncreased;
         EventManager.HealthChanged += HealthChanged;
-        EventManager.ShieldChanged += ShieldChanged;
         EventManager.GunChanged += GunChanged;
     }
 
@@ -71,12 +69,6 @@ public class AmmoPanel : MonoBehaviour {
         healthbar.fillAmount = a;
         healthbar.GetComponent<Animator>().SetBool("isLow", (a < 0.5f));
         Debug.Log("Health Changed: " + a.ToString());
-    }
-
-    private void ShieldChanged(float a)
-    {
-        shieldbar.fillAmount = a;
-        Debug.Log("Shield Changed: " + a.ToString());
     }
 
     private void GunChanged (string name)

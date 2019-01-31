@@ -104,7 +104,8 @@ GameObject:
   - component: {fileID: 81955088852313238}
   - component: {fileID: 114700376535361704}
   - component: {fileID: 114295495693497740}
-  m_Layer: 0
+  - component: {fileID: 114008584861996036}
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,6 +578,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114008584861996036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796890630694270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 8592acfee03472b4e8da14b64fbe115c, type: 2}
 --- !u!114 &114089193831031696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -729,12 +742,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479107418e78df54da77ec67dc8eee20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   maxShield: 100
   currentHealth: 100
   currentShield: 100
   ShieldRechargeDelay: 5
-  ShieldRechargeRate: 5
+  ShieldRechargeRate: 0.5
 --- !u!136 &136218636857405662
 CapsuleCollider:
   m_ObjectHideFlags: 1
