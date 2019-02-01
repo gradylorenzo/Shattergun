@@ -478,6 +478,8 @@ MonoBehaviour:
     runningPosition: {x: 0, y: 0, z: 0}
     pickupPrefab: {fileID: 1784558401208510, guid: d205da9c7afc3344aa3afeeb345b987f,
       type: 2}
+    hitPrefab: {fileID: 1409540267368286, guid: d81b79a64c16c9b4d806b173b677782e,
+      type: 2}
   fpsCam: {fileID: 0}
   adsTransitionSpeed: 0.05
   gunModel: {fileID: 1196233367290470}

@@ -16,7 +16,7 @@ public class HealthWarningSFX : MonoBehaviour {
 
     private void HealthChanged(float a)
     {
-        if(a < 0.5f)
+        if(a < 0.25f)
         {
             if (!sound.isPlaying)
             {

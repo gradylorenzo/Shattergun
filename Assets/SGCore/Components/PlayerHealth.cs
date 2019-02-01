@@ -35,9 +35,12 @@ public class PlayerHealth : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(Time.time > timeOfLastHit + HealthRechargeDelay)
+        if (currentHealth < maxHealth)
         {
-            RepairHealth(HealthRechargeRate);
+            if (Time.time > timeOfLastHit + HealthRechargeDelay)
+            {
+                RepairHealth(HealthRechargeRate);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.K))

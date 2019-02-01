@@ -67,7 +67,7 @@ public class AmmoPanel : MonoBehaviour {
     private void HealthChanged(float a)
     {
         healthbar.fillAmount = a;
-        healthbar.GetComponent<Animator>().SetBool("isLow", (a < 0.5f));
+        healthbar.GetComponent<Animator>().SetBool("isLow", (a < 0.25f));
         Debug.Log("Health Changed: " + a.ToString());
     }
 

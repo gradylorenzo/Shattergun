@@ -569,7 +569,7 @@ MonoBehaviour:
     pause: 2.5
     damage: 100
     range: 1000
-    rateOfFire: 9
+    rateOfFire: 0.33
     impactForce: 180
     reloadTime: 5
     recoilHipfire: {x: 10, y: 0}
@@ -579,7 +579,8 @@ MonoBehaviour:
     runningPosition: {x: 0, y: 0, z: 0}
     pickupPrefab: {fileID: 1784558401208510, guid: 7546da01ffbaeec41ad0af4f86fa5caa,
       type: 2}
-    cooldownTimer: {fileID: 114177393029213080}
+    hitPrefab: {fileID: 1409540267368286, guid: d81b79a64c16c9b4d806b173b677782e,
+      type: 2}
   fpsCam: {fileID: 0}
   adsTransitionSpeed: 0.05
   gunModel: {fileID: 1196233367290470}

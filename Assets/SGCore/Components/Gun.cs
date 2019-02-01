@@ -34,6 +34,7 @@ public class Gun : MonoBehaviour {
         public Vector3 ADSPosition;
         public Vector3 runningPosition;
         public GameObject pickupPrefab;
+        public GameObject hitPrefab;
     }
     public int ammo = 20;
     public int maxAmmo = 20;
@@ -73,6 +74,12 @@ public class Gun : MonoBehaviour {
 
     private void Update()
     {
+        TakeTriggerInput();
+        ADS();
+    }
+
+    private void TakeTriggerInput()
+    {
         if (CanUseGun)
         {
             if (Config.Mode == GunConfiguration.FiringModes.fullauto)
@@ -83,17 +90,21 @@ public class Gun : MonoBehaviour {
                     Shoot();
                 }
             }
-            else if(Config.Mode == GunConfiguration.FiringModes.semiauto)
+            else if (Config.Mode == GunConfiguration.FiringModes.semiauto)
             {
                 if (((Input.GetButtonDown("Fire1") || (Input.GetAxis("Fire1") > 0)) && Time.time >= nextFire))
                 {
-                    nextFire = Time.time + Config.pause;
+                    nextFire = Time.time + (1f / Config.rateOfFire);
                     Shoot();
                 }
             }
-            else if(Config.Mode == GunConfiguration.FiringModes.burstfire)
+            else if (Config.Mode == GunConfiguration.FiringModes.burstfire)
             {
-
+                if (((Input.GetButtonDown("Fire1") || (Input.GetAxis("Fire1") > 0)) && Time.time >= nextFire))
+                {
+                    nextFire = Time.time + (1f / (Config.rateOfFire));
+                    StartCoroutine("ShootBurst");
+                }
             }
 
             if (Input.GetButtonDown("Reload"))
@@ -101,8 +112,6 @@ public class Gun : MonoBehaviour {
                 StartCoroutine("Reload");
             }
         }
-
-        ADS();
     }
 
     private void ADS()
@@ -139,18 +148,7 @@ public class Gun : MonoBehaviour {
     {
         if (ammo > 0)
         {
-            muzzleFlash.Play();
-            gunSound.Play();
-            //GetComponent<Animator>().Play("KICK");
-
-            if (isADS)
-            {
-                fpsCam.SendMessage("Bump", Config.recoilADS);
-            }
-            else
-            {
-                fpsCam.SendMessage("Bump", Config.recoilHipfire);
-            }
+            Effects();
 
             RaycastHit hit;
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, Config.range))
@@ -177,6 +175,8 @@ public class Gun : MonoBehaviour {
                     {
                         EventManager.EnemyHit();
                     }
+
+                    Instantiate(Config.hitPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 }
                 else
                 {
@@ -203,6 +203,77 @@ public class Gun : MonoBehaviour {
             ammo += LocalPlayerManager.ReloadAmmo(neededAmmo);
             EventManager.AmmoInWeaponChanged(ammo);
             CanUseGun = true;
+        }
+    }
+
+    private IEnumerator ShootBurst()
+    {
+        if (ammo >= Config.burstLength)
+        {
+            int i = 0;
+            while (i < Config.burstLength)
+            {
+                Effects();
+                i++;
+
+                RaycastHit hit;
+                if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, Config.range))
+                {
+                    if (hit.rigidbody != null)
+                    {
+                        hit.rigidbody.AddForce(-hit.normal * Config.impactForce);
+                    }
+
+                    Target target = hit.transform.GetComponent<Target>();
+                    if (target != null)
+                    {
+                        Debug.Log("HIT GAMEOBJECT " + hit.transform.name + " : TARGET COMPONENT FOUND");
+                        if (target.isExplosive)
+                        {
+                            target.Damage(Config.damage, hit.point, hit.normal);
+                        }
+                        else
+                        {
+                            target.Damage(Config.damage);
+                        }
+
+                        if (target.isEnemy)
+                        {
+                            EventManager.EnemyHit();
+                        }
+
+                        Instantiate(Config.hitPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    }
+                    else
+                    {
+                        Debug.Log("HIT GAMEOBJECT " + hit.transform.name + " : TARGET COMPONENT NOT FOUND");
+                    }
+                }
+
+                ammo -= 1;
+                EventManager.AmmoInWeaponChanged(ammo);
+                yield return new WaitForSeconds(Config.pause);
+            }
+        }
+        else
+        {
+            drySound.Play();
+            StartCoroutine("Reload");
+        }
+    }
+
+    private void Effects()
+    {
+        muzzleFlash.Play();
+        gunSound.Play();
+
+        if (isADS)
+        {
+            fpsCam.SendMessage("Bump", Config.recoilADS);
+        }
+        else
+        {
+            fpsCam.SendMessage("Bump", Config.recoilHipfire);
         }
     }
 }
